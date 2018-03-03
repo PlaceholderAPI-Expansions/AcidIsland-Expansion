@@ -95,7 +95,7 @@ public class AcidIslandExpansion extends PlaceholderExpansion {
 			return api.getTeamMembers(p.getUniqueId()) != null ? 
 					String.valueOf(api.getTeamMembers(p.getUniqueId()).size()) : "0";
 		case "coop_islands":
-			return ASkyBlockAPI.getInstance().getCoopIslands(p) != null ? 
+			return api.getCoopIslands(p) != null ? 
 					String.valueOf(api.getCoopIslands(p).size()) : "0";
 		}
 		return null;
