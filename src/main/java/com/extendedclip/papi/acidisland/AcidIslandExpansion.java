@@ -1,6 +1,6 @@
 /*
  *
- * Bungee-Expansion
+ * AcidIsland-Expansion
  * Copyright (C) 2018 Ryan McCarthy
  *
  * This program is free software: you can redistribute it and/or modify
