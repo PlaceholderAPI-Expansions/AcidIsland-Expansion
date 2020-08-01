@@ -23,9 +23,10 @@ package com.extendedclip.papi.acidisland;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
 
 import com.wasteofplastic.acidisland.ASkyBlockAPI;
+import org.bukkit.entity.Player;
 
 
 public class AcidIslandExpansion extends PlaceholderExpansion {
@@ -34,7 +35,7 @@ public class AcidIslandExpansion extends PlaceholderExpansion {
 	
 	@Override
 	public boolean canRegister() {
-		return Bukkit.getPluginManager().getPlugin(getPlugin()) != null;
+		return Bukkit.getPluginManager().getPlugin(getRequiredPlugin()) != null;
 	}
 	
 	@Override
@@ -58,7 +59,7 @@ public class AcidIslandExpansion extends PlaceholderExpansion {
 	}
 
 	@Override
-	public String getPlugin() {
+	public String getRequiredPlugin() {
 		return "AcidIsland";
 	}
 
@@ -69,7 +70,8 @@ public class AcidIslandExpansion extends PlaceholderExpansion {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public String onPlaceholderRequest(Player p, String identifier) {
+	public String onRequest(OfflinePlayer p, String identifier) {
+		Player player = (Player) p;
 
 		if (api == null) {
 			return "";
@@ -95,8 +97,8 @@ public class AcidIslandExpansion extends PlaceholderExpansion {
 			return api.getTeamMembers(p.getUniqueId()) != null ? 
 					String.valueOf(api.getTeamMembers(p.getUniqueId()).size()) : "0";
 		case "coop_islands":
-			return api.getCoopIslands(p) != null ? 
-					String.valueOf(api.getCoopIslands(p).size()) : "0";
+			return api.getCoopIslands(player) != null ?
+					String.valueOf(api.getCoopIslands(player).size()) : "0";
 		}
 		return null;
 	
